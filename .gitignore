@@ -3,3 +3,7 @@
 *.userprefs
 Library
 Temp
+.vs
+obj
+Packages
+Logs

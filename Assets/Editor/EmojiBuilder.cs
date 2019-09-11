@@ -122,17 +122,19 @@ public class EmojiBuilder  {
 					}
 				}
 
-				string t = System.Convert.ToString (sourceDic [key] - 1, 2);
+				string t = System.Convert.ToString (sourceDic [key], 2);
 				float r = 0, g = 0, b = 0;
 				if (t.Length >= 3) {
-					r = t [2] == '1' ? 0.5f : 0;
-					g = t [1] == '1' ? 0.5f : 0;
-					b = t [0] == '1' ? 0.5f : 0;
+					r = t[0] == '1' ? 1 : 0;
+					g = t[1] == '1' ? 1 : 0;
+					b = t[2] == '1' ? 1 : 0;
 				} else if (t.Length >= 2) {
-					r = t [1] == '1' ? 0.5f : 0;
-					g = t [0] == '1' ? 0.5f : 0;
+					//r = t [0] == '1' ? 1 : 0;
+					g = t[0] == '1' ? 1 : 0;
+                    b = t[1] == '1' ? 1 : 0;
 				} else {
-					r = t [0] == '1' ? 0.5f : 0;
+                    //r = t [0] == '1' ? 1 : 0;
+                    b = t[0] == '1' ? 1 : 0;
 				}
 
 				dataTex.SetPixel (x / EmojiSize, y / EmojiSize, new Color (r, g, b, 1));

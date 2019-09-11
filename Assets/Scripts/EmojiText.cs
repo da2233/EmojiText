@@ -121,26 +121,26 @@ public class EmojiText : Text
                     float fHeightOffsetHalf = (emojiSize - fCharHeight) * 0.5f;
                     float fStartOffset = emojiSize * (1 - _iconScaleOfDoubleSymbole);
 
-                    m_TempVerts [3] = verts [i];//1
-					m_TempVerts [2] = verts [i + 1];//2
-					m_TempVerts [1] = verts [i + 2];//3
-					m_TempVerts [0] = verts [i + 3];//4
+                    m_TempVerts[0] = verts[i];//1
+					m_TempVerts[1] = verts[i + 1];//2
+					m_TempVerts[2] = verts[i + 2];//3
+					m_TempVerts[3] = verts[i + 3];//4
 
-                    m_TempVerts[0].position += new Vector3(fStartOffset, -fHeightOffsetHalf, 0);
-                    m_TempVerts[1].position += new Vector3(fStartOffset - fCharWidth + emojiSize, -fHeightOffsetHalf, 0);
-                    m_TempVerts[2].position += new Vector3(fStartOffset - fCharWidth + emojiSize, fHeightOffsetHalf, 0);
-					m_TempVerts [3].position += new Vector3(fStartOffset, fHeightOffsetHalf, 0);
+                    m_TempVerts[0].position += new Vector3(fStartOffset, fHeightOffsetHalf, 0);
+                    m_TempVerts[1].position += new Vector3(fStartOffset - fCharWidth + emojiSize, fHeightOffsetHalf, 0);
+                    m_TempVerts[2].position += new Vector3(fStartOffset - fCharWidth + emojiSize, -fHeightOffsetHalf, 0);
+                    m_TempVerts[3].position += new Vector3(fStartOffset, -fHeightOffsetHalf, 0);
 					
-					m_TempVerts [0].position *= unitsPerPixel;
-					m_TempVerts [1].position *= unitsPerPixel;
-					m_TempVerts [2].position *= unitsPerPixel;
-					m_TempVerts [3].position *= unitsPerPixel;
-					
-					float pixelOffset = emojiDic [index].size / 32 / 2;
-					m_TempVerts [0].uv1 = new Vector2 (emojiDic [index].x + pixelOffset, emojiDic [index].y + pixelOffset);
-					m_TempVerts [1].uv1 = new Vector2 (emojiDic [index].x - pixelOffset + emojiDic [index].size, emojiDic [index].y + pixelOffset);
-					m_TempVerts [2].uv1 = new Vector2 (emojiDic [index].x - pixelOffset + emojiDic [index].size, emojiDic [index].y - pixelOffset + emojiDic [index].size);
-					m_TempVerts [3].uv1 = new Vector2 (emojiDic [index].x + pixelOffset, emojiDic [index].y - pixelOffset + emojiDic [index].size);
+					m_TempVerts[0].position *= unitsPerPixel;
+					m_TempVerts[1].position *= unitsPerPixel;
+					m_TempVerts[2].position *= unitsPerPixel;
+					m_TempVerts[3].position *= unitsPerPixel;
+
+                    //float pixelOffset = emojiDic [index].size / 32 / 2;
+                    m_TempVerts[0].uv1 = new Vector2(emojiDic[index].x, emojiDic[index].y + emojiDic[index].size);
+                    m_TempVerts[1].uv1 = new Vector2(emojiDic[index].x + emojiDic[index].size, emojiDic[index].y + emojiDic[index].size);
+                    m_TempVerts[2].uv1 = new Vector2(emojiDic[index].x + emojiDic[index].size, emojiDic[index].y);
+                    m_TempVerts[3].uv1 = new Vector2(emojiDic [index].x, emojiDic [index].y);
 
 					toFill.AddUIVertexQuad (m_TempVerts);
 

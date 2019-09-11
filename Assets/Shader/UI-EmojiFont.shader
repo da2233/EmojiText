@@ -119,7 +119,7 @@ Shader "UI/EmojiFont" {
 					// read data
 					fixed4 data = tex2D(_EmojiDataTex, uv);
 					// compute the frame count of emoji
-					half frameCount = 1 + sign(data.r) + sign(data.g) * 2 + sign(data.b) * 4;
+					half frameCount = saturate(data.r) * 4 + saturate(data.g) * 2 + saturate(data.b) * 1;
 					// compute current frame index of emoji
 					half index = abs(fmod(floor(_Time.x * _FrameSpeed * 50), frameCount));
 					// judge current frame is in the next line or not.
